@@ -33,5 +33,18 @@ Voila! Eric reached 100 and won the game.
 ## IntelliJ Setup
 1. Check out in a local directory
 2. In IntelliJ, select `File -> New -> Project from Existing Sources...`
-3. Select `build.gradle` from the check out location
+3. Select `build.gradle` from the check out location and click `OK`
 4. In IntelliJ Settings, enable Annotation Processing for Lombok to work   
+
+## Design Philosophy
+1. UI process will instantiate a new Game instance by providing each player's name and whether that player is a bot or not
+2. UI can get the details of the game (like in which order will the players play, player positions, etc) from `game` instance
+3. To play the game UI calls `nextMove()` on the `game` instance
+4. The `game` executes the move and returns the result of the move to UI process:
+   - Affected player and his updated position
+   - Whether he's reached the finish point or not
+   - If reached, what's his rank
+   - Any ladders or chutes encountered during the move
+5. UI can use this info to update the UI and to decide whether to end the game or continue
+
+
