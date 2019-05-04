@@ -1,10 +1,14 @@
 package com.rezilience.chutesnladders;
 
+import com.rezilience.chutesnladders.exception.GameInitializationException;
 import com.rezilience.chutesnladders.model.*;
 
 import java.util.*;
 
 public class Game {
+    private static final int MIN_PLAYERS = 2;
+    private static final int MAX_PLAYERS = 4;
+
     private final Deque<Player> playerDeque;
     private final List<Player> playerList;
     private final Spinner spinner;
@@ -12,6 +16,12 @@ public class Game {
     private GameBoard board;
 
     public Game(List<Player> playerList) {
+
+        if (playerList.size() < MIN_PLAYERS) {
+            throw new GameInitializationException("At least " + MIN_PLAYERS + " needed to start the game.");
+        } else if (playerList.size() > MAX_PLAYERS) {
+            throw new GameInitializationException("At most " + MAX_PLAYERS + " allowed.");
+        }
 
         // get the chutes and ladders game board
         board = new GameBoard();
