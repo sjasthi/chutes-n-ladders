@@ -1,0 +1,24 @@
+apply plugin: 'java'
+apply plugin: 'application'
+
+mainClassName = 'runner.SimulateGame'
+
+repositories {
+    mavenCentral()
+}
+
+apply plugin: 'idea'
+
+sourceCompatibility = 1.8
+targetCompatibility = 1.8
+
+dependencies {
+
+    testCompile group: 'junit', name: 'junit', version: '4.12'
+    compile group: 'org.projectlombok', name: 'lombok', version: '1.18.6'
+}
+
+jar {
+    baseName = 'chutes-n-ladders'
+    version =  '0.1.0'
+}
