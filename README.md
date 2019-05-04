@@ -12,7 +12,7 @@ From the root directory
 2. Run command `./gradlew run` to run the simulation
 
 #### Directly running the main method
-1. Run the main method in `com.rezilience.runner.SimulateGame` 
+1. Run the main method in `com.rezilience.runner.SimulateGame` (assuming you have built the code already) 
 
 ### Simulator O/p
 Each line in o/p indicates a move
@@ -29,3 +29,9 @@ Paul was at 99, scored a 6, but since 105 is more than 100 (finish point), he's 
 `64: Eric: 97 --> 100`  
 `The winner is Eric!`
 Voila! Eric reached 100 and won the game.
+
+## IntelliJ Setup
+1. Check out in a local directory
+2. In IntelliJ, select `File -> New -> Project from Existing Sources...`
+3. Select `build.gradle` from the check out location
+4. In IntelliJ Settings, enable Annotation Processing for Lombok to work   
