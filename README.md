@@ -48,3 +48,7 @@ Voila! Eric reached 100 and won the game.
 5. UI can use this info to update the UI and to decide whether to end the game or continue
 
 
+## TODO
+- [ ] Refactor the code to be more reusable and organized
+- [ ] Write test cases
+- [ ] Enhance
