@@ -1,9 +1,10 @@
 package com.rezilience.runner;
 
-import com.rezilience.chutesnladders.Game;
 import com.rezilience.chutesnladders.model.Jump;
 import com.rezilience.chutesnladders.model.MoveResult;
 import com.rezilience.chutesnladders.model.Player;
+import com.rezilience.chutesnladders.service.Game;
+import com.rezilience.chutesnladders.service.GameProvider;
 
 import java.util.Arrays;
 
@@ -13,9 +14,11 @@ public class SimulateGame {
     }
 
     private static void startSimulation() {
+
+        Game game = GameProvider.getInstance();
         Player eric = new Player("Eric", true);
         Player paul = new Player("Paul", true);
-        Game game = new Game(Arrays.asList(eric, paul));
+        game.setupNewGame(Arrays.asList(eric, paul));
 
         int moves = 1;
         boolean isWinner;

@@ -1,6 +1,7 @@
-package com.rezilience.chutesnladders;
+package com.rezilience.chutesnladders.service;
 
-import com.rezilience.chutesnladders.exception.GameInitializationException;
+import com.rezilience.chutesnladders.Spinner;
+import com.rezilience.chutesnladders.exception.GameSetupException;
 import com.rezilience.chutesnladders.model.*;
 
 import java.util.*;
@@ -9,31 +10,37 @@ public class Game {
     private static final int MIN_PLAYERS = 2;
     private static final int MAX_PLAYERS = 4;
 
-    private final Deque<Player> playerDeque;
-    private final List<Player> playerList;
-    private final Spinner spinner;
+    private Deque<Player> playerDeque;
+    private List<Player> playerList;
+    private Spinner spinner;
     private int rank = 1;
     private GameBoard board;
+    private boolean isSetup = false;
 
-    public Game(List<Player> playerList) {
-
-        if (playerList.size() < MIN_PLAYERS) {
-            throw new GameInitializationException("At least " + MIN_PLAYERS + " needed to start the game.");
-        } else if (playerList.size() > MAX_PLAYERS) {
-            throw new GameInitializationException("At most " + MAX_PLAYERS + " allowed.");
-        }
-
+    Game() {
         // get the chutes and ladders game board
         board = new GameBoard();
+
+        // get a spinner
+        spinner = new Spinner();
+    }
+
+    public void setupNewGame(List<Player> playerList) {
+        if (isSetup) {
+            throw new GameSetupException("Destroy current game to set up new one: game.destroy()");
+        }
+
+        if (playerList.size() < MIN_PLAYERS) {
+            throw new GameSetupException("At least " + MIN_PLAYERS + " needed to start the game.");
+        } else if (playerList.size() > MAX_PLAYERS) {
+            throw new GameSetupException("At most " + MAX_PLAYERS + " allowed.");
+        }
 
         // randomly order the players and assign a unique id to each
         initializePlayers(playerList);
 
         this.playerList = Collections.unmodifiableList(playerList);
         this.playerDeque = new ArrayDeque<>(playerList);
-
-        // get a spinner
-        spinner = new Spinner();
     }
 
     /**
