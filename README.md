@@ -50,5 +50,6 @@ Voila! Eric reached 100 and won the game.
 
 ## TODO
 - [ ] Refactor the code to be more reusable and organized
+- [ ] Add more design details (structure of code, main interfaces, etc) to README
 - [ ] Write test cases
 - [ ] Enhance
