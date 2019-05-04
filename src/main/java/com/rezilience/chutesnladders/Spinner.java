@@ -1,4 +1,4 @@
-package chutesnladders;
+package com.rezilience.chutesnladders;
 
 import java.util.concurrent.ThreadLocalRandom;
 

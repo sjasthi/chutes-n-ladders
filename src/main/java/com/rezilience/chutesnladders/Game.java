@@ -1,6 +1,6 @@
-package chutesnladders;
+package com.rezilience.chutesnladders;
 
-import chutesnladders.model.*;
+import com.rezilience.chutesnladders.model.*;
 
 import java.util.*;
 

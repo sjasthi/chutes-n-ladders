@@ -1,4 +1,4 @@
-package chutesnladders.model;
+package com.rezilience.chutesnladders.model;
 
 import lombok.Data;
 
