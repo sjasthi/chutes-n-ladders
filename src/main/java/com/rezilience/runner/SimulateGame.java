@@ -3,7 +3,7 @@ package com.rezilience.runner;
 import com.rezilience.chutesnladders.model.Jump;
 import com.rezilience.chutesnladders.model.MoveResult;
 import com.rezilience.chutesnladders.model.Player;
-import com.rezilience.chutesnladders.service.Game;
+import com.rezilience.chutesnladders.service.ChutesAndLaddersGame;
 import com.rezilience.chutesnladders.service.GameProvider;
 
 import java.util.Arrays;
@@ -15,16 +15,17 @@ public class SimulateGame {
 
     private static void startSimulation() {
 
-        Game game = GameProvider.getInstance();
+        ChutesAndLaddersGame chutesAndLaddersGame = GameProvider.getInstance();
         Player eric = new Player("Eric", true);
         Player paul = new Player("Paul", true);
-        game.setupNewGame(Arrays.asList(eric, paul));
+
+        chutesAndLaddersGame.setupNewGame(Arrays.asList(eric, paul));
 
         int moves = 1;
         boolean isWinner;
         Player player;
         do {
-            MoveResult moveResult = game.nextMove();
+            MoveResult moveResult = chutesAndLaddersGame.nextMove();
             player = moveResult.getPlayer();
             if (moveResult.isMoveSuccess()) {
                 System.out.print(moves++ + ": " + player + ": "
@@ -32,7 +33,6 @@ public class SimulateGame {
                         + " --> " + (moveResult.getFromCell() + moveResult.getSpinValue()));
                 for (Jump jump : moveResult.getJumps()) {
                     System.out.print(" --" + jump.getJumpType() + "--> " + jump.getToBlock());
-
                 }
             } else {
                 System.out.print(moves++ + ": " + player + ": "
@@ -44,6 +44,8 @@ public class SimulateGame {
 
             isWinner = player.isOnFinishPoint();
         } while (!isWinner);
+
+        chutesAndLaddersGame.clearCurrentGame();
 
         System.out.println("The winner is " + player + "!");
     }

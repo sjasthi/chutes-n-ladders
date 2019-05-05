@@ -1,18 +1,18 @@
 package com.rezilience.chutesnladders.service;
 
 /**
- * Responsible to handle instances of the Game
+ * Responsible to handle instances of the ChutesAndLaddersGame
  * Currently configured to provide only a single instance of game
  */
 public class GameProvider {
 
-    volatile private static Game instance;
+    volatile private static ChutesAndLaddersGame instance;
 
-    public static Game getInstance() {
+    public static ChutesAndLaddersGame getInstance() {
         if (instance == null) {
-            synchronized (Game.class) {
+            synchronized (ChutesAndLaddersGame.class) {
                 if (instance == null) {
-                    instance = new Game();
+                    instance = new ChutesAndLaddersGame();
                 }
             }
         }

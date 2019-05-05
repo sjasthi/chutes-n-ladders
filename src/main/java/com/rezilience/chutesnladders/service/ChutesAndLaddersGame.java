@@ -6,7 +6,7 @@ import com.rezilience.chutesnladders.model.*;
 
 import java.util.*;
 
-public class Game {
+public class ChutesAndLaddersGame {
     private static final int MIN_PLAYERS = 2;
     private static final int MAX_PLAYERS = 4;
 
@@ -17,7 +17,7 @@ public class Game {
     private GameBoard board;
     private boolean isSetup = false;
 
-    Game() {
+    ChutesAndLaddersGame() {
         // get the chutes and ladders game board
         board = new GameBoard();
 
@@ -27,7 +27,7 @@ public class Game {
 
     public void setupNewGame(List<Player> playerList) {
         if (isSetup) {
-            throw new GameSetupException("Destroy current game to set up new one: game.destroy()");
+            throw new GameSetupException("Destroy current game to set up new one (game.clearCurrentGame())");
         }
 
         if (playerList.size() < MIN_PLAYERS) {
@@ -41,6 +41,7 @@ public class Game {
 
         this.playerList = Collections.unmodifiableList(playerList);
         this.playerDeque = new ArrayDeque<>(playerList);
+        isSetup = true;
     }
 
     /**
@@ -146,5 +147,15 @@ public class Game {
 
     private int getAndUpdateRank() {
         return rank++;
+    }
+
+    /**
+     * Destroy current game
+     */
+    public void clearCurrentGame() {
+        playerDeque = null;
+        playerList = null;
+        rank = 1;
+        isSetup = false;
     }
 }
