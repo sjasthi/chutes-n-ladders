@@ -43,9 +43,10 @@ The backend is designed with an intention to support the below behavior on UI
 <img src="res/screen2.png" width="195" height="381">
 </p>  
 
-1. UI shows option to either start new game or resume an existing one  
+1. UI shows option to either start new game or resume an existing one
+2. When `New Game` selected, user can choose number of players and whether they're bot or human  
 2. UI can get the details of the game (like in which order will the players play, player positions, etc) from `game` instance  
-3. To play the game UI calls `nextMove()` on the `game` instance  
+3. To play the game UI calls `nextMove()` on the `game` instance, if needed  
 4. The `game` executes the move and returns the result of the move to UI process:  
    - Affected player and his updated position  
    - Whether he's reached the finish point or not  
