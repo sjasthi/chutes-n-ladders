@@ -37,7 +37,9 @@ Voila! Eric reached 100 and won the game.
 4. In IntelliJ Settings, enable Annotation Processing for Lombok to work   
 
 ## Design Philosophy
-1. UI process will instantiate a new Game instance by providing each player's name and whether that player is a bot or not
+The backend is designed with an intention to support the below behavior on UI
+1. UI shows option to either start new game or resume an existing one
+![Home Screen](res/screen1.jpg) 
 2. UI can get the details of the game (like in which order will the players play, player positions, etc) from `game` instance
 3. To play the game UI calls `nextMove()` on the `game` instance
 4. The `game` executes the move and returns the result of the move to UI process:
@@ -49,7 +51,6 @@ Voila! Eric reached 100 and won the game.
 
 
 ## TODO
-- [ ] Refactor the code to be more reusable and organized
 - [ ] Add more design details (structure of code, main interfaces, etc) to README
 - [ ] Write test cases
 - [ ] Enhance
