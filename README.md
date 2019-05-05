@@ -37,6 +37,8 @@ Voila! Eric reached 100 and won the game.
 4. In IntelliJ Settings, enable Annotation Processing for Lombok to work   
 
 ## Design Philosophy
+
+### Behavior Design
 The backend is designed with an intention to support the below behavior on UI  
 <p align="left">
 <img src="res/screen1.png" width="195" height="381">
@@ -54,8 +56,13 @@ The backend is designed with an intention to support the below behavior on UI
    - Any ladders or chutes encountered during the move  
 5. UI can use this info to update the UI and to decide whether to end the game or continue  
 
+### System Design
+`com.rezilience.chutesnladders.model` package has all the models like Player, Board, Spinner, Block, etc.  
+`com.rezilience.chutesnladders.Game` is the main Game class which is configured to be a singleton since we don't expect multiple instances of game.    
+`Game.setupNewGame` method is responsible for initializing the players (assigning them turns, ids, start positions, etc)  
+`Game.clearCurrentGame` method is responsible for resetting `game` state, so that new game can be set up
 
 ## TODO
-- [ ] Add more design details (structure of code, main interfaces, etc) to README
+- [x] Add more design details (structure of code, main interfaces, etc) to README
 - [ ] Write test cases
-- [ ] Enhance
+- [ ] Enhance functionality, make it more generic

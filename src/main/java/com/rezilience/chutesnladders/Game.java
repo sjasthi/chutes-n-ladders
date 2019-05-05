@@ -1,6 +1,5 @@
 package com.rezilience.chutesnladders;
 
-import com.rezilience.chutesnladders.model.Spinner;
 import com.rezilience.chutesnladders.exception.GameSetupException;
 import com.rezilience.chutesnladders.model.*;
 
@@ -17,12 +16,16 @@ public class Game {
     private GameBoard board;
     private boolean isSetup = false;
 
-    Game() {
+    private Game() {
         // get the chutes and ladders game board
         board = new GameBoard();
 
         // get a spinner
         spinner = new Spinner();
+    }
+
+    public static Game getInstance() {
+        return GameProvider.GAME;
     }
 
     public void setupNewGame(List<Player> playerList) {
@@ -157,5 +160,9 @@ public class Game {
         playerList = null;
         rank = 1;
         isSetup = false;
+    }
+
+    private static class GameProvider {
+        private static final Game GAME = new Game();
     }
 }

@@ -1,10 +1,9 @@
 package com.rezilience.runner;
 
+import com.rezilience.chutesnladders.Game;
 import com.rezilience.chutesnladders.model.Jump;
 import com.rezilience.chutesnladders.model.MoveResult;
 import com.rezilience.chutesnladders.model.Player;
-import com.rezilience.chutesnladders.Game;
-import com.rezilience.chutesnladders.GameProvider;
 
 import java.util.Arrays;
 
@@ -15,7 +14,7 @@ public class SimulateGame {
 
     private static void startSimulation() {
 
-        Game game = GameProvider.getInstance();
+        Game game = Game.getInstance();
         Player eric = new Player("Eric", true);
         Player paul = new Player("Paul", true);
 
