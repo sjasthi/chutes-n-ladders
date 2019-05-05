@@ -41,16 +41,17 @@ The backend is designed with an intention to support the below behavior on UI
 <p align="left">
 <img src="res/screen1.png" width="195" height="381">
 <img src="res/screen2.png" width="195" height="381">
-</p>
-1. UI shows option to either start new game or resume an existing one
-2. UI can get the details of the game (like in which order will the players play, player positions, etc) from `game` instance
-3. To play the game UI calls `nextMove()` on the `game` instance
-4. The `game` executes the move and returns the result of the move to UI process:
-   - Affected player and his updated position
-   - Whether he's reached the finish point or not
-   - If reached, what's his rank
-   - Any ladders or chutes encountered during the move
-5. UI can use this info to update the UI and to decide whether to end the game or continue
+</p>  
+
+1. UI shows option to either start new game or resume an existing one  
+2. UI can get the details of the game (like in which order will the players play, player positions, etc) from `game` instance  
+3. To play the game UI calls `nextMove()` on the `game` instance  
+4. The `game` executes the move and returns the result of the move to UI process:  
+   - Affected player and his updated position  
+   - Whether he's reached the finish point or not  
+   - If reached, what's his rank  
+   - Any ladders or chutes encountered during the move  
+5. UI can use this info to update the UI and to decide whether to end the game or continue  
 
 
 ## TODO
