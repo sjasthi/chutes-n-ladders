@@ -13,9 +13,12 @@ public class SimulateGame {
     }
 
     private static void startSimulation() {
+
+        Game game = Game.getInstance();
         Player eric = new Player("Eric", true);
         Player paul = new Player("Paul", true);
-        Game game = new Game(Arrays.asList(eric, paul));
+
+        game.setupNewGame(Arrays.asList(eric, paul));
 
         int moves = 1;
         boolean isWinner;
@@ -29,7 +32,6 @@ public class SimulateGame {
                         + " --> " + (moveResult.getFromCell() + moveResult.getSpinValue()));
                 for (Jump jump : moveResult.getJumps()) {
                     System.out.print(" --" + jump.getJumpType() + "--> " + jump.getToBlock());
-
                 }
             } else {
                 System.out.print(moves++ + ": " + player + ": "
@@ -41,6 +43,8 @@ public class SimulateGame {
 
             isWinner = player.isOnFinishPoint();
         } while (!isWinner);
+
+        game.clearCurrentGame();
 
         System.out.println("The winner is " + player + "!");
     }

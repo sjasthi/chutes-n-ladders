@@ -37,14 +37,32 @@ Voila! Eric reached 100 and won the game.
 4. In IntelliJ Settings, enable Annotation Processing for Lombok to work   
 
 ## Design Philosophy
-1. UI process will instantiate a new Game instance by providing each player's name and whether that player is a bot or not
-2. UI can get the details of the game (like in which order will the players play, player positions, etc) from `game` instance
-3. To play the game UI calls `nextMove()` on the `game` instance
-4. The `game` executes the move and returns the result of the move to UI process:
-   - Affected player and his updated position
-   - Whether he's reached the finish point or not
-   - If reached, what's his rank
-   - Any ladders or chutes encountered during the move
-5. UI can use this info to update the UI and to decide whether to end the game or continue
 
+### Behavior Design
+The backend is designed with an intention to support the below behavior on UI  
+<p align="left">
+<img src="res/screen1.png" width="195" height="381">
+<img src="res/screen2.png" width="195" height="381">
+</p>  
 
+1. UI shows option to either start new game or resume an existing one
+2. When `New Game` selected, user can choose number of players and whether they're bot or human  
+2. UI can get the details of the game (like in which order will the players play, player positions, etc) from `game` instance  
+3. To play the game UI calls `nextMove()` on the `game` instance, if needed  
+4. The `game` executes the move and returns the result of the move to UI process:  
+   - Affected player and his updated position  
+   - Whether he's reached the finish point or not  
+   - If reached, what's his rank  
+   - Any ladders or chutes encountered during the move  
+5. UI can use this info to update the UI and to decide whether to end the game or continue  
+
+### System Design
+`com.rezilience.chutesnladders.model` package has all the models like Player, Board, Spinner, Block, etc.  
+`com.rezilience.chutesnladders.Game` is the main Game class which is configured to be a singleton since we don't expect multiple instances of game.    
+`Game.setupNewGame` method is responsible for initializing the players (assigning them turns, ids, start positions, etc)  
+`Game.clearCurrentGame` method is responsible for resetting `game` state, so that new game can be set up
+
+## TODO
+- [x] Add more design details (structure of code, main interfaces, etc) to README
+- [ ] Write test cases
+- [ ] Enhance functionality, make it more generic
