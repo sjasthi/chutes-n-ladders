@@ -1,12 +1,12 @@
-package com.rezilience.chutesnladders.service;
+package com.rezilience.chutesnladders;
 
-import com.rezilience.chutesnladders.Spinner;
+import com.rezilience.chutesnladders.model.Spinner;
 import com.rezilience.chutesnladders.exception.GameSetupException;
 import com.rezilience.chutesnladders.model.*;
 
 import java.util.*;
 
-public class ChutesAndLaddersGame {
+public class Game {
     private static final int MIN_PLAYERS = 2;
     private static final int MAX_PLAYERS = 4;
 
@@ -17,7 +17,7 @@ public class ChutesAndLaddersGame {
     private GameBoard board;
     private boolean isSetup = false;
 
-    ChutesAndLaddersGame() {
+    Game() {
         // get the chutes and ladders game board
         board = new GameBoard();
 

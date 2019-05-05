@@ -3,8 +3,8 @@ package com.rezilience.runner;
 import com.rezilience.chutesnladders.model.Jump;
 import com.rezilience.chutesnladders.model.MoveResult;
 import com.rezilience.chutesnladders.model.Player;
-import com.rezilience.chutesnladders.service.ChutesAndLaddersGame;
-import com.rezilience.chutesnladders.service.GameProvider;
+import com.rezilience.chutesnladders.Game;
+import com.rezilience.chutesnladders.GameProvider;
 
 import java.util.Arrays;
 
@@ -15,17 +15,17 @@ public class SimulateGame {
 
     private static void startSimulation() {
 
-        ChutesAndLaddersGame chutesAndLaddersGame = GameProvider.getInstance();
+        Game game = GameProvider.getInstance();
         Player eric = new Player("Eric", true);
         Player paul = new Player("Paul", true);
 
-        chutesAndLaddersGame.setupNewGame(Arrays.asList(eric, paul));
+        game.setupNewGame(Arrays.asList(eric, paul));
 
         int moves = 1;
         boolean isWinner;
         Player player;
         do {
-            MoveResult moveResult = chutesAndLaddersGame.nextMove();
+            MoveResult moveResult = game.nextMove();
             player = moveResult.getPlayer();
             if (moveResult.isMoveSuccess()) {
                 System.out.print(moves++ + ": " + player + ": "
@@ -45,7 +45,7 @@ public class SimulateGame {
             isWinner = player.isOnFinishPoint();
         } while (!isWinner);
 
-        chutesAndLaddersGame.clearCurrentGame();
+        game.clearCurrentGame();
 
         System.out.println("The winner is " + player + "!");
     }

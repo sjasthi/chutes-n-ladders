@@ -1,4 +1,4 @@
-package com.rezilience.chutesnladders;
+package com.rezilience.chutesnladders.model;
 
 import java.util.concurrent.ThreadLocalRandom;
 
