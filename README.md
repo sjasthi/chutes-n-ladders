@@ -53,10 +53,19 @@ The API is designed considering below UI and behavior in mind
 
 ### API and Technical Details
 `com.rezilience.chutesnladders.model` package has all the models like Player, Board, Spinner, Block, etc.  
-`com.rezilience.chutesnladders.Game` is the main Game class which is configured to be a singleton since we don't expect multiple instances of game.    
-`Game.setupNewGame` => initialize the players (assigning them turns, ids, start positions, etc)  
-`Game.clearCurrentGame()` => reset `game` state, so that new game can be set up  
-`Game.nexMove()` => execute next move
+`com.rezilience.chutesnladders.Game` is the main Game class which is configured to be a singleton since we don't expect multiple instances of game.  
+`void Game.setupNewGame(List<Player>)` => initialize the players (assigning them turns, ids, start positions, etc)  
+`MoveResult Game.nexMove()` => execute next move  
+`boolean Game.isSetup()` => check if an active game exists  
+`List<Player> Game.getPlayerList()` => return all players and their current status  
+`boolean Game.clearCurrentGame()` => reset `game` state, so that new game can be set up  
+`com.rezilience.chutesnladders.model.MoveResult`:  
+- affected player and his updated status
+- his position before move
+- spinner value
+- info about Chutes / Ladders encountered
+- whether move was successful
+
 
 ## TODO
 - [x] Add more design details (structure of code, main interfaces, etc) to README

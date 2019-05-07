@@ -165,11 +165,15 @@ public class Game {
     /**
      * Destroy current game
      */
-    public void clearCurrentGame() {
-        playerDeque = null;
-        playerList = null;
-        rank = 1;
-        isSetup = false;
+    public boolean clearCurrentGame() {
+        if (isSetup) {
+            playerDeque = null;
+            playerList = null;
+            rank = 1;
+            isSetup = false;
+            return true;
+        }
+        return false;
     }
 
     private static class GameProvider {
