@@ -59,7 +59,7 @@ The API is designed considering below UI and behavior in mind
 `boolean Game.isSetup()` => check if an active game exists  
 `List<Player> Game.getPlayerList()` => return all players and their current status  
 `boolean Game.clearCurrentGame()` => reset `game` state, so that new game can be set up  
-`com.rezilience.chutesnladders.model.MoveResult`:  
+`com.rezilience.chutesnladders.model.MoveResult` contains:  
 - affected player and his updated status
 - his position before move
 - spinner value
