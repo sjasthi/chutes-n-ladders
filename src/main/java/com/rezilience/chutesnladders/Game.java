@@ -28,9 +28,13 @@ public class Game {
         return GameProvider.GAME;
     }
 
+    public boolean isSetup() {
+        return isSetup;
+    }
+
     public void setupNewGame(List<Player> playerList) {
         if (isSetup) {
-            throw new GameSetupException("Destroy current game to set up new one (game.clearCurrentGame())");
+            throw new GameSetupException("Another game active. Call clearCurrentGame() to clear active game.");
         }
 
         if (playerList.size() < MIN_PLAYERS) {
@@ -69,6 +73,9 @@ public class Game {
      * @return playerList list of players
      */
     public List<Player> getPlayerList() {
+        if (!isSetup) {
+            throw new GameSetupException("No game active. Call setupNewGame(playerList)");
+        }
         return new ArrayList<>(playerList);
     }
 
@@ -89,6 +96,9 @@ public class Game {
     public MoveResult nextMove() {
 
         // TODO check that the game has not already ended since this is a public method, worth having that check
+        if (!isSetup) {
+            throw new GameSetupException("No active game. Call setupNewGame(playerList)");
+        }
 
         Player currentPlayer = getAndUpdateCurrentPlayer();
 
