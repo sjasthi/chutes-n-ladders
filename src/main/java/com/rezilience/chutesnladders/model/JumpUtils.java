@@ -1,3 +1,4 @@
+/** Making some changes to JumpUtils for demo purpose */
 package com.rezilience.chutesnladders.model;
 
 import java.util.HashMap;
@@ -20,9 +21,7 @@ public class JumpUtils {
         JUMP_TYPE_MAP.put('C', JumpType.CHUTE);
     }
 
-    private JumpUtils() {
-    }
-
+  
     static Map<Integer, Jump> getStartBlockJumpMap() {
         Map<Integer, Jump> map = new HashMap<>();
         for (int i = 0; i < JUMP_FROM_LIST.length; i++) {
